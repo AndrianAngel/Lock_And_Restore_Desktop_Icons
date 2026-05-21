@@ -8,7 +8,27 @@
 
 A lightweight utility that lets you **lock your desktop icon positions** to prevent accidental dragging, and **save/restore named desktop layout snapshots** at any time — all from a system tray icon or keyboard hotkeys.
 
----
+
+___
+
+### 🔒LOCK & RESTORE DESKTOP ICONS ULTIMATE
+___
+
+## ⚙️Desktop Settings
+![A1 Settings](Images/A1.png)
+___
+
+## 🎯Desktop Snapshot Manager
+![A2 Settings](Images/A2.png)
+___
+
+## ✅TRAY MENU
+![A3 Settings](Images/A3.png)
+___
+
+## 📽️Watch Demo
+![E1.gif Settings](Images/E1.gif)
+___
 
 ## ✨ Features
 
