@@ -6,7 +6,7 @@
 **Ultimate Release — 26-05-20**
 *by AndrianAngel*
 
-A lightweight AutoHotkey utility that lets you **lock your desktop icon positions** to prevent accidental dragging, and **save/restore named desktop layout snapshots** at any time — all from a system tray icon or keyboard hotkeys.
+A lightweight utility that lets you **lock your desktop icon positions** to prevent accidental dragging, and **save/restore named desktop layout snapshots** at any time — all from a system tray icon or keyboard hotkeys.
 
 ---
 
@@ -73,7 +73,6 @@ Supports all AHK modifier symbols (`!` Alt, `^` Ctrl, `+` Shift, `#` Win). Setti
 
 ## 🔧 Requirements
 
-- [AutoHotkey v1.1](https://www.autohotkey.com/)
 - Windows 10 / 11
 
 ---
