@@ -1,27 +1,85 @@
-🖥️ Desktop Icon Lock Toggle (AutoHotkey)
 
-When the lock is active, desktop icons cannot be selected, moved, or deleted. The right‑click context menu remains accessible, and any Display options (such as icon size or auto‑arrange) chosen from that menu will still affect icon behavior. This ensures icons stay fixed in place while allowing normal desktop customization through the context menu.
+---
 
-✨ Features
-- Toggle Lock/Unlock: Press Alt+F6 to enable or disable the lock.
-- Locking Behavior:
-  - Prevents selecting, dragging, or rearranging icons.
-  - Blocks the Delete key when pressed on the desktop.
-  - Disables interaction with the desktop ListView (WS_DISABLED style).
-- Unlocking Behavior:
-  - Restores normal desktop interaction.
-  - Refreshes the desktop to ensure icons are usable again.
-- Hotkey Protection: Blocks Ctrl+Alt++ and Ctrl+Alt+- combinations that normally cycle through icon sizes.
-- Tray Notifications: Displays a tray tip when icons are locked or unlocked for quick feedback.
-- Safe Cleanup: Automatically removes hooks and restores desktop behavior when the script exits.
+## 🖥️ Lock & Restore Desktop Icons
 
-🚀 Usage
-1. Install AutoHotkey.
-2. Run the script (LockDesktopIconsMoveand_Delete.ahk).
-3. Use Alt+F6 to toggle between locked and unlocked states.
-4. Check the tray notifications to confirm the current status.
+**Ultimate Release — 26-05-20**
+*by AndrianAngel*
 
-🔧 Technical Notes
-- Uses SetWindowLong to apply/remove WS_DISABLED style on the desktop ListView (SysListView32).
-- Hooks into keyboard events to intercept the Delete key when icons are locked.
-- Ensures proper cleanup with UnhookWindowsHookEx on exit.
+A lightweight AutoHotkey utility that lets you **lock your desktop icon positions** to prevent accidental dragging, and **save/restore named desktop layout snapshots** at any time — all from a system tray icon or keyboard hotkeys.
+
+---
+
+## ✨ Features
+
+### 🔒 Lock / Unlock Desktop Icons
+Toggle a desktop icon lock with a single hotkey or tray click. When locked, icons become immovable and the Delete key is blocked on the desktop — preventing any accidental reorganization. Unlocking instantly restores full interactivity and redraws the desktop. The current state is reflected via a tray tip notification.
+
+### 📸 Desktop Snapshot Manager
+Save unlimited named desktop layouts and restore them at any time. The Snapshot Manager is a dark-themed GUI with a full list of saved layouts and three actions:
+
+- **Save Current** — prompts for a name (auto-filled with a timestamp default), sanitizes it, and writes the exact pixel position of every desktop icon to an `.ini` file in the `DesktopSnapshots\` folder.
+- **Restore** — moves all icons back to their saved positions, matching each icon by name. Confirms before applying.
+- **Delete** — permanently removes the selected layout file after confirmation.
+
+The status bar at the bottom shows feedback for every action (saved, restored, deleted, or count of layouts).
+
+### 🗂️ Tray Menu
+Right-clicking the tray icon gives quick access to everything:
+
+- **Toggle Lock** — locks or unlocks desktop icons (hotkey shown inline)
+- **Settings** — opens the hotkey configuration panel
+- **Snapshot Manager** — opens the layout manager GUI
+- **Saved Desktops submenu** — lists every saved layout by name; click any entry to restore it instantly with a confirmation prompt
+- **Reload Script** — restarts the script
+- **Exit** — safely unhooks and exits
+
+The Saved Desktops submenu auto-refreshes whenever a layout is saved or deleted.
+
+### ⚙️ Settings GUI
+A dark always-on-top panel lets you remap both hotkeys without editing any file:
+
+- **Lock/Unlock Hotkey** — default `Alt+F6`
+- **Snapshot Manager Hotkey** — default `Alt+F7`
+
+Supports all AHK modifier symbols (`!` Alt, `^` Ctrl, `+` Shift, `#` Win). Settings are saved to `DesktopLockSettings.ini` and hotkeys re-register instantly on save.
+
+---
+
+## 🗂️ File Structure
+
+```
+📁 Script Folder
+├── Lock_Restore_Desktop_Icons.exe
+├── DesktopLockSettings.ini       ← auto-created on first save
+└── 📁 DesktopSnapshots\
+    ├── MyLayout.ini (can be renamed)
+    ├── Work.ini
+    └── ...
+```
+
+---
+
+## ⌨️ Default Hotkeys
+
+| Action | Hotkey |
+|---|---|
+| Toggle Lock / Unlock | `Alt + F6` |
+| Open Snapshot Manager | `Alt + F7` |
+
+> Both hotkeys are fully rebindable from the Settings GUI.
+
+---
+
+## 🔧 Requirements
+
+- [AutoHotkey v1.1](https://www.autohotkey.com/)
+- Windows 10 / 11
+
+---
+
+## 📌 Notes
+
+- Icon positions are saved and restored **by icon name**, so renaming desktop items may affect layout accuracy.
+- Locking uses a low-level Windows hook and the `WS_DISABLED` window style on the desktop ListView — no third-party dependencies.
+- On exit, the keyboard hook is automatically cleaned up to prevent any system-level interference.
